@@ -5,6 +5,6 @@
 
 
 //Sepolia
-export const EASCoinAddress = "0x9e21b564a15558b9d2f60bca706399dd4ba26ca7";
-export const EACMaster = "0x711005a50e5a6c8421058ad006763a77f956cfbb";
-export const EASNFT = "0xc8f6b601d88454ea4f618487078fcbaf8891e512";
+export const EASCoinAddress = "0x4a003F06265693E152C3d6131103dAE4e124d2DF";
+export const EACMaster = "0xC59eF08b5D7081846002493Dd3945c071c3e53cD";
+export const EASNFT = "0x7a6C40056dfB4d96c1426EB5BA1e6dD9810180Ef";
