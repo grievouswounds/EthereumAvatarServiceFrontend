@@ -37,6 +37,12 @@ const SelfCustodyTimeOutLiquidationCard: NextPage = () => {
         }
     }
 
+    function liquidationFound(liquidationAmount: bigint) {
+        setLiquidationAmount(liquidationAmount);
+        setInputERC721Address("");
+        liquidateTimeOutWrite.reset();
+    }
+
     const liquidateTimeOutConfig = writePreperations.selfCustody.liquidateTimeOut(inputERC721Address);
     const liquidateTimeOutWrite = useContractWrite(liquidateTimeOutConfig);
     useWaitForTransaction({
@@ -44,9 +50,7 @@ const SelfCustodyTimeOutLiquidationCard: NextPage = () => {
         onSuccess(data) {
             liquidationEvents.map((event) => {
                 if (event.txHash == data.transactionHash) {
-                    setLiquidationAmount(event.amount);
-                    setInputERC721Address("");
-                    liquidateTimeOutWrite.reset();
+                    liquidationFound(event.amount);
                 }
             });
         },

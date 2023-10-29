@@ -34,6 +34,12 @@ const EscrowMovedLiquidationCard: NextPage = () => {
         }
     }
 
+    function liquidationFound(liquidationAmount: bigint) {
+        setLiquidationAmount(liquidationAmount);
+        setInputERC721Address("");
+        liquidateAvatarMovedWrite.reset();
+    }
+
     const liquidateAvatarMovedConfig = writePreperations.escrow.liquidateAvatarMoved(inputERC721Address);
     const liquidateAvatarMovedWrite = useContractWrite(liquidateAvatarMovedConfig);
     useWaitForTransaction({
@@ -41,7 +47,7 @@ const EscrowMovedLiquidationCard: NextPage = () => {
         onSuccess(data) {
             liquidationEvents.map((event) => {
                 if (event.txHash == data.transactionHash) {
-                    setLiquidationAmount(event.amount);
+                    liquidationFound(event.amount)
                 }
             })
         },

@@ -34,6 +34,12 @@ const SelfCustodyNewOwnerLiquidationCard: NextPage = () => {
         }
     }
 
+    function liquidationFound(liquidationAmount: bigint) {
+        setLiquidationAmount(liquidationAmount);
+        setInputERC721Address("");
+        liquidateNewOwnerWrite.reset();
+    }
+
     const liquidateNewOwnerConfig = writePreperations.selfCustody.liquidationNewOwner(inputERC721Address);
     const liquidateNewOwnerWrite = useContractWrite(liquidateNewOwnerConfig);
     useWaitForTransaction({
@@ -41,9 +47,7 @@ const SelfCustodyNewOwnerLiquidationCard: NextPage = () => {
         onSuccess(data) {
             liquidationEvents.map((event) => {
                 if (event.txHash == data.transactionHash) {
-                    setLiquidationAmount(event.amount);
-                    setInputERC721Address("");
-                    liquidateNewOwnerWrite.reset();
+                    liquidationFound(event.amount);
                 }
             });
         },

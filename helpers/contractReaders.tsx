@@ -72,7 +72,6 @@ const readpreperations = {
                 ...ERC721ContractConfig,
                 address: erc721Address as Address,
                 functionName: "name",
-                enabled: false
             });
 
             return erc721NameConfig;

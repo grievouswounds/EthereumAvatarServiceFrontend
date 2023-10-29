@@ -9,7 +9,7 @@ const writePreperations = {
                 functionName: "approve",
                 args: [addressToApprove as Address, idToApprove],
                 address: erc721Address as Address,
-                enabled: false
+                // enabled: false
             });
 
             return approveERC721Prep;
@@ -30,7 +30,7 @@ const writePreperations = {
                 functionName: "approve",
                 args: [addressToApprove as Address, amountToApprove],
                 address: erc20Address as Address,
-                enabled: false
+                // enabled: false
             });
 
             return approveERC20Prep;
@@ -39,7 +39,7 @@ const writePreperations = {
             const createAvatarVaultPrep = usePrepareContractWrite({
                 ...EACMasterConfig,
                 functionName: "createAvatarVault",
-                enabled: false
+
             });
 
             return createAvatarVaultPrep;

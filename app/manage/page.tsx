@@ -39,6 +39,7 @@ const Manage: NextPage = () => {
     }, [address]);
 
     useEffect(() => {
+        console.log(userHasExpressionVault);
         if (!userHasExpressionVault) {
             createAvatarVaultPrep.refetch();
 
@@ -57,7 +58,6 @@ const Manage: NextPage = () => {
             setUserHasExpressionVault(true);
             setUserExpressionVaultAddress(data);
         }
-
     }, [getAvatarVaultRead])
 
     const vaultIsActiveRead = readpreperations.generic.readAvatarIsActive(userExpressionVaultAddress)
